@@ -55,8 +55,13 @@ year = 1915
  %}
 
 ### Тестирование покупки картины
-PUT  http://localhost:8080/pictureBuy?id=1
+POST  http://localhost:8080/pictureBuy
 
+id = 1
+visitor_id = 1
+picture_id = 1
+cost = 15000
+currency = RUB
 
 > {%
  client.test("Тестирование поиска книги",function (){
