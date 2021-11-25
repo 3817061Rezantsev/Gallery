@@ -10,7 +10,13 @@ GET http://localhost:8080/book/book.php?title=Мечтают ли андройд
  %}
 
 ### Тестирование покупки билета
-POST http://localhost:8080/tickets?id=1
+POST http://localhost:8080/tickets
+
+id = 1
+gallery_id = 1
+dateOfVisit = 2021.11.25
+cost = 5000
+
 
 > {%
  client.test("Тестирование поиска книги",function (){
@@ -32,25 +38,30 @@ GET  http://localhost:8080/ticketPurchaseReport?id=1
  %}
 
 ### Тестирование добавления своей картины в галерею
-PUT  http://localhost:8080/picture?id=1
+POST  http://localhost:8080/picture
+Content-Type: application/x-www-form-urlencoded
 
+id = 1
+name = Чёрный квадрат
+author = Казимира Малевича
+year = 1915
 
 > {%
  client.test("Тестирование поиска книги",function (){
      client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
-     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+     client.assert(response.body === 'Ваша картина добавлена', "Ошибка добавления");
  }
  );
  %}
 
 ### Тестирование покупки картины
-POST  http://localhost:8080/pictureBuy?id=1
+PUT  http://localhost:8080/pictureBuy?id=1
 
 
 > {%
  client.test("Тестирование поиска книги",function (){
      client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
-     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+     client.assert(response.body === 'Картина Куплена', "Ошибка покупки");
  }
  );
  %}
