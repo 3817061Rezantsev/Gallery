@@ -54,3 +54,26 @@ POST  http://localhost:8080/pictureBuy?id=1
  }
  );
  %}
+
+### Тестирование просмотра картин по датам
+GET  http://localhost:8080/picture?dataFirst=1&dataSecond=2
+
+
+> {%
+ client.test("Тестирование просмотра картин по датам",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Картины показаны', "Ошибка даты");
+ }
+ );
+ %}
+
+### Тестирование акта о покупке картин
+GET  http://localhost:8080/PaintPurchaseReport?id=1
+
+> {%
+ client.test("Тестирование поиска картины",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Картина куплена', "Ошибка покупки");
+ }
+ );
+ %}
