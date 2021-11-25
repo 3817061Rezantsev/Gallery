@@ -1,0 +1,56 @@
+### Тестирование поиска книг по названию
+GET http://localhost:8080/book/book.php?title=Мечтают ли андройды об электоовцах?
+
+> {%
+ client.test("Тестирование поиска книги",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ошидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'hello world', "Валидный ответ:");
+ }
+ );
+ %}
+
+### Тестирование покупки билета
+POST http://localhost:8080/tickets?id=1
+
+> {%
+ client.test("Тестирование поиска книги",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+ }
+ );
+ %}
+
+### Тестирование акта о покупке билета
+GET  http://localhost:8080/ticketPurchaseReport?id=1
+
+> {%
+ client.test("Тестирование поиска книги",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+ }
+ );
+ %}
+
+### Тестирование добавления своей картины в галерею
+PUT  http://localhost:8080/picture?id=1
+
+
+> {%
+ client.test("Тестирование поиска книги",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+ }
+ );
+ %}
+
+### Тестирование покупки картины
+POST  http://localhost:8080/pictureBuy?id=1
+
+
+> {%
+ client.test("Тестирование поиска книги",function (){
+     client.assert(response.status === 200, "Проверяю код ответа, Ожидаю код 200. Фактическое значение "+response.status);
+     client.assert(response.body === 'Билет куплен', "Ошибка покупки");
+ }
+ );
+ %}
